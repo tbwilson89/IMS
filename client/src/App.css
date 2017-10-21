@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+a {
+  text-decoration: none;
+}
+body {
+  background-color: white;
+}
+.container {
+  background-color: rgba(0,0,0,.5);
+}
+.nav-container {
+  width: 100%;
+  background-color: rgba(0,0,0,.7);
+  display: flex;
+  justify-content: space-between;
+}
+.current-page {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.secondary-nav {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.link-btn {
+  padding: 15px;
+}
+.right-nav {
+  display: flex;
+}
+.body-container {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
