@@ -9,8 +9,14 @@ a {
 body {
   background-color: white;
 }
+input {
+  color: black;
+}
 .container {
+  height: 100vh;
   background-color: rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
 }
 .nav-container {
   width: 100%;
@@ -18,26 +24,78 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.nav-container .link-btn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 .current-page {
   background-color: rgba(0, 0, 0, 0.3);
 }
 .secondary-nav {
   background-color: rgba(0, 0, 0, 0.6);
+  transform: scaleY(0);
+  transform-origin: top;
+  /*animation: .3s slide-in .5s linear;
+  animation-fill-mode: forwards;*/
+  transition: all .3s;
 }
-.link-btn {
-  padding: 15px;
+
+.left-nav {
+  display: flex;
 }
 .right-nav {
   display: flex;
 }
-.body-container {
-  height: 800px;
+.link-btn {
+  padding: 15px;
+  cursor: pointer;
+  transition: all .5s;
+}
+.drop-down-nav {
+  transform-origin: top;
+  transition: 1s;
+}
+.drop-down-nav.hide {
+  /*transform: scaleY(0);
+  display: none;*/
+  animation: 1s dropnavanim linear;
+  animation-fill-mode: forwards;
+}
+@keyframes dropnavanim {
+  0% {
+    display: inline;
+    transform: scaleY(1);
+  }
+  100% {
+    display: none;
+    transform: scaleY(0);
+  }
+}
+.drop-down-nav.show {
+  /*transform: scaleY(1);*/
+  animation: 1s dropnavanim linear;
+  animation-fill-mode: backwards;
+}
+
+.main-content {
+  flex-basis: 800px;
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
 }
 
+footer {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+@keyframes slide-in {
+  0% {
+    transform:scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
