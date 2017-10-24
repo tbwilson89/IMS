@@ -81,7 +81,6 @@ export default class Redirects extends Component {
           <div className={'secondary-nav '}>
             {/* {this.state.navdropdown} */}
             <AddLocation display={this.state.displaySecondary}/>
-            <div className='thissucks'></div>
           </div>
           <div className='main-content'>
             <div className='body'>

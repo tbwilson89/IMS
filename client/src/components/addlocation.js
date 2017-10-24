@@ -12,7 +12,7 @@ export default class AddLocation extends Component {
   render(){
     return(
       <div className={'drop-down-nav ' + this.props.display}>
-          <span><input type='text'></input></span>
+        <div className='input-box' contenteditable='true'></div>
       </div>
     )
   }

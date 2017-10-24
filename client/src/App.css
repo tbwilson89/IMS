@@ -63,19 +63,21 @@ input {
   cursor: pointer;
   transition: all .5s;
 }
-.thissucks {
-  height: 50px;
-  width: 50px;
-  background-color: purple;
-  /*animation: 1s dropnavhide 1s linear;*/
-}
-.thissucks:hover {
-  animation: 1s dropnavhide 1s linear;
+.input-box {
+  width: 100px;
+  height: 20px;
+  padding: 2px 0 2px 5px;
+  border-radius: 5%;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .drop-down-nav {
+  display: inline-block;
   transform-origin: top;
   transition: 1s;
-  overflow: hidden;
+  padding: 10px;
 }
 .drop-down-nav.hide {
   /*transform: scaleY(0);*/
