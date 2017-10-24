@@ -3,6 +3,9 @@
   padding: 0;
   color: white;
 }
+form {
+  width: inherit;
+}
 a {
   text-decoration: none;
 }
@@ -32,11 +35,21 @@ input {
 }
 .secondary-nav {
   background-color: rgba(0, 0, 0, 0.6);
-  transform: scaleY(0);
-  transform-origin: top;
   /*animation: .3s slide-in .5s linear;
   animation-fill-mode: forwards;*/
-  transition: all .3s;
+  height: 10vh;
+  transition: all 1s;
+}
+.secondary-nav.hide {
+  /*transform: scaleY(0);*/
+  /*display: none;*/
+  animation: 1s dropnavhide linear;
+}
+.secondary-nav.show {
+  /*transform: scaleY(1);*/
+  /*display: inline;*/
+  overflow: hidden;
+  animation: 1s dropnavshow linear;
 }
 
 .left-nav {
@@ -50,30 +63,52 @@ input {
   cursor: pointer;
   transition: all .5s;
 }
+.thissucks {
+  height: 50px;
+  width: 50px;
+  background-color: purple;
+  /*animation: 1s dropnavhide 1s linear;*/
+}
+.thissucks:hover {
+  animation: 1s dropnavhide 1s linear;
+}
 .drop-down-nav {
   transform-origin: top;
   transition: 1s;
+  overflow: hidden;
 }
 .drop-down-nav.hide {
-  /*transform: scaleY(0);
-  display: none;*/
-  animation: 1s dropnavanim linear;
-  animation-fill-mode: forwards;
+  /*transform: scaleY(0);*/
+  /*display: none;*/
+  /*transition: 1s;*/
+  overflow: hidden;
+  animation: 1s dropnavhide linear;
 }
-@keyframes dropnavanim {
+@keyframes dropnavhide {
   0% {
-    display: inline;
     transform: scaleY(1);
+    transform: translateX(0%);
   }
   100% {
+    transform: scaleY(0);
+    opacity: 0;
+    transform: translateX(80%);
+  }
+}
+@@keyframes dropnavshow {
+  0% {
     display: none;
     transform: scaleY(0);
+  }
+  100% {
+    display: inline;
+    transform: scaleY(1);
   }
 }
 .drop-down-nav.show {
   /*transform: scaleY(1);*/
-  animation: 1s dropnavanim linear;
-  animation-fill-mode: backwards;
+  display: inline;
+  animation: 1s dropnavshow linear;
 }
 
 .main-content {

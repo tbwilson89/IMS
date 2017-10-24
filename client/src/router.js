@@ -23,29 +23,6 @@ export default class Redirects extends Component {
   }
 
   displaySection(btnClicked, curComp){
-    // let addlocation
-    // let checkin
-    // let checkout
-    // switch(btnClicked){
-    //   case 'addlocation':
-    //     addlocation = this.state.addlocationdisplay === 'scaleY(0)' ? 'scaleY(1)' : 'scaleY(0)'
-    //     break;
-    //   case 'checkin':
-    //     checkin = this.state.checkindisplay === 'scaleY(0)' ? 'scaleY(1)' : 'scaleY(0)'
-    //     break;
-    //   case 'checkout':
-    //     checkout = this.state.checkoutdisplay === 'scaleY(0)' ? 'scaleY(1)' : 'scaleY(0)'
-    //     break;
-    //   default:
-    //     break;
-    // }
-    // this.setState({
-    //   addlocationdisplay: addlocation,
-    //   checkindisplay: checkin,
-    //   checkoutdisplay: checkout,
-    //   navdropdown: curComp
-    // })
-    // console.log(curComp)
     let addloc
     let checkin
     let checkout
@@ -55,18 +32,22 @@ export default class Redirects extends Component {
         addloc = this.state.addlocationdisplay === 'hide' ? 'show' : 'hide'
         checkin = 'hide'
         checkout = 'hide'
-        secnavdis = this.state.addlocationdisplay === 'hide' ? 'scaleY(1)' : 'scaleY(0)'
+        secnavdis = this.state.addlocationdisplay === 'hide' ? 'show' : 'hide'
         curComp = this.state.addlocationdisplay === 'hide' ? (<AddLocation display='show'/>) : (<AddLocation display='hide'/>)
         break;
       case 'checkin':
         addloc = 'hide'
         checkin = this.state.checkindisplay === 'hide' ? 'show' : 'hide'
         checkout = 'hide'
+        secnavdis = this.state.checkindisplay === 'hide' ? 'show' : 'hide'
+        curComp = this.state.checkindisplay === 'hide' ? (<CheckInOut display='show'/>) : (<AddLocation display='hide'/>)
         break;
       case 'checkout':
         addloc = 'hide'
         checkin = 'hide'
         checkout = this.state.checkoutdisplay === 'hide' ? 'show' : 'hide'
+        secnavdis = this.state.checkoutdisplay === 'hide' ? 'show' : 'hide'
+        curComp = this.state.checkoutdisplay === 'hide' ? (<CheckInOut display='show'/>) : (<AddLocation display='hide'/>)
         break;
       default:
         break;
@@ -88,7 +69,7 @@ export default class Redirects extends Component {
           <div className='nav-container'>
             <div className='left-nav'>
               <Link to='/'><div className='link-btn current-page'>IMS v0.1</div></Link>
-              <div className='link-btn' onClick={() => this.displaySection('addlocation', (<AddLocation display={this.state.addlocationdisplay}/>))}>Add Location</div>
+              <div className='link-btn' onClick={() => this.displaySection('addlocation')}>Add Location</div>
               <div className='link-btn' onClick={() => this.displaySection('checkin', (<CheckInOut />))}>Check In</div>
               <div className='link-btn' onClick={() => this.displaySection('checkout', (<CheckInOut type='out'/>))}>Check Out</div>
             </div>
@@ -97,8 +78,10 @@ export default class Redirects extends Component {
               <Link to='/help'><div className='link-btn'>Help</div></Link>
             </div>
           </div>
-          <div className='secondary-nav' style={{transform:this.state.displaySecondary}}>
-            {this.state.navdropdown}
+          <div className={'secondary-nav '}>
+            {/* {this.state.navdropdown} */}
+            <AddLocation display={this.state.displaySecondary}/>
+            <div className='thissucks'></div>
           </div>
           <div className='main-content'>
             <div className='body'>
