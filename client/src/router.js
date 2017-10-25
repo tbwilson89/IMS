@@ -69,7 +69,10 @@ export default class Redirects extends Component {
           <div className='nav-container'>
             <div className='left-nav'>
               <Link to='/'><div className='link-btn current-page'>IMS v0.1</div></Link>
-              <div className='link-btn' onClick={() => this.displaySection('addlocation')}>Add Location</div>
+              <div>
+                <div className='link-btn' onClick={() => this.displaySection('addlocation')}>Add Location</div>
+                <div className='drop-down-nav show'>dropdownnav info</div>
+              </div>
               <div className='link-btn' onClick={() => this.displaySection('checkin', (<CheckInOut />))}>Check In</div>
               <div className='link-btn' onClick={() => this.displaySection('checkout', (<CheckInOut type='out'/>))}>Check Out</div>
             </div>
@@ -79,8 +82,7 @@ export default class Redirects extends Component {
             </div>
           </div>
           <div className={'secondary-nav '}>
-            {/* {this.state.navdropdown} */}
-            <AddLocation display={this.state.displaySecondary}/>
+            {this.state.navdropdown}
           </div>
           <div className='main-content'>
             <div className='body'>
@@ -88,9 +90,6 @@ export default class Redirects extends Component {
               <Route path='/login' component={Login}/>
             </div>
           </div>
-          <footer>
-            This is a footer!
-          </footer>
         </div>
       </Router>
     )
