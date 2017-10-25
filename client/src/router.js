@@ -17,9 +17,11 @@ export default class Redirects extends Component {
       checkindisplay: 'hide',
       checkoutdisplay: 'hide',
       lastclick: '',
-      navdropdown: ''
+      navdropdown: '',
+      testvar: 'show'
     }
     this.displaySection = this.displaySection.bind(this)
+    this.testclick = this.testclick.bind(this)
   }
 
   displaySection(btnClicked, curComp){
@@ -62,6 +64,17 @@ export default class Redirects extends Component {
     })
   }
 
+  hideSection(){
+
+  }
+
+  testclick(){
+    let testvar = this.state.testvar === 'hide' ? 'show' : 'hide'
+    this.setState({
+      testvar: testvar
+    })
+  }
+
   render(){
     return(
       <Router>
@@ -69,10 +82,9 @@ export default class Redirects extends Component {
           <div className='nav-container'>
             <div className='left-nav'>
               <Link to='/'><div className='link-btn current-page'>IMS v0.1</div></Link>
-              <div>
-                <div className='link-btn' onClick={() => this.displaySection('addlocation')}>Add Location</div>
-                <div className='drop-down-nav show'>dropdownnav info</div>
-              </div>
+              <div className='link-btn' onClick={() => this.displaySection('addlocation')}>Add Location</div>
+              <div className={'drop-down-nav ' + this.state.testvar} onClick={this.testclick}>dropdownnav info</div>
+              <button onClick={this.testclick}>Toggle Display</button>
               <div className='link-btn' onClick={() => this.displaySection('checkin', (<CheckInOut />))}>Check In</div>
               <div className='link-btn' onClick={() => this.displaySection('checkout', (<CheckInOut type='out'/>))}>Check Out</div>
             </div>

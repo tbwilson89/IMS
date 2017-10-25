@@ -78,30 +78,28 @@ input {
   white-space: nowrap;
 }
 .drop-down-nav {
-  width: inherit;
-  display: inline-block;
   background-color: grey;
   transform-origin: top;
   transition: 1s;
-  padding: 10px;
+  padding: 25px;
   padding-left: 25px;
 }
 .drop-down-nav.hide {
-  /*transform: scaleY(0);*/
-  /*display: none;*/
+  transform: scaleY(0);
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   /*transition: 1s;*/
   overflow: hidden;
-  animation: 1s dropnavhide linear infinite;
+  /*animation: 1s dropnavhide linear infinite;*/
 }
 @keyframes dropnavhide {
   0% {
     transform: scaleY(1);
-    transform: translateX(0%);
   }
   100% {
     transform: scaleY(0);
     opacity: 0;
-    transform: translateX(80%);
   }
 }
 @@keyframes dropnavshow {
