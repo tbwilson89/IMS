@@ -4,8 +4,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Home from './components/home.js'
 import Login from './components/login.js'
 
-import AddLocation from './components/addlocation.js'
-import CheckInOut from './components/checkinout.js'
+import SideNav from './components/sidenav/sidenav.js'
 import UserProfile from './components/userprofile.js'
 
 export default class Redirects extends Component {
@@ -24,7 +23,7 @@ export default class Redirects extends Component {
     this.testclick = this.testclick.bind(this)
   }
 
-  displaySection(btnClicked, curComp){
+  displaySection(btnClicked){
     let addloc
     let checkin
     let checkout
@@ -33,19 +32,16 @@ export default class Redirects extends Component {
         addloc = this.state.addlocationdisplay === 'hide' ? '' : 'hide'
         checkin = this.state.checkindisplay
         checkout = this.state.checkoutdisplay
-        curComp = this.state.addlocationdisplay === 'hide' ? (<AddLocation display='show'/>) : (<AddLocation display='hide'/>)
         break;
       case 'checkin':
         addloc = this.state.addlocationdisplay
         checkin = this.state.checkindisplay === 'hide' ? '' : 'hide'
         checkout = this.state.checkoutdisplay
-        curComp = this.state.checkindisplay === 'hide' ? (<CheckInOut display='show'/>) : (<AddLocation display='hide'/>)
         break;
       case 'checkout':
         addloc = this.state.addlocationdisplay
         checkin = this.state.checkindisplay
         checkout = this.state.checkoutdisplay === 'hide' ? '' : 'hide'
-        curComp = this.state.checkoutdisplay === 'hide' ? (<CheckInOut display='show'/>) : (<AddLocation display='hide'/>)
         break;
       default:
         break;
@@ -54,8 +50,6 @@ export default class Redirects extends Component {
       addlocationdisplay: addloc,
       checkindisplay: checkin,
       checkoutdisplay: checkout,
-      lastclick: btnClicked,
-      navdropdown: curComp
     })
   }
 
@@ -70,22 +64,12 @@ export default class Redirects extends Component {
     return(
       <Router>
         <div className='container'>
-          <div className='nav-container'>
-            <div className='top-nav'>
-              <Link to='/'><div className='link-btn current-page'>IMS v0.1</div></Link>
-              <div className='link-btn' onClick={() => this.displaySection('addlocation')}>Add Location</div>
-              <AddLocation display={this.state.addlocationdisplay}/>
-              <div className='link-btn' onClick={() => this.displaySection('checkin', (<CheckInOut />))}>Check In</div>
-              <CheckInOut display={this.state.checkindisplay}/>
-              <div className='link-btn' onClick={() => this.displaySection('checkout', (<CheckInOut type='out'/>))}>Check Out</div>
-              <CheckInOut display={this.state.checkoutdisplay}/>
-            </div>
-            <div className='bot-nav'>
-              <Link to='/login'><div className='link-btn'>Login</div></Link>
-              <Link to='/userprofile'><div className='link-btn'>User Profile</div></Link>
-              <Link to='/help'><div className='link-btn'>Help</div></Link>
-            </div>
-          </div>
+          <SideNav
+            onClick={this.displaySection}
+            addLocDis={this.state.addlocationdisplay}
+            checkInDis={this.state.checkindisplay}
+            checkOutDis={this.state.checkoutdisplay}
+          />
           <div className='main-content'>
             <div className='body'>
               <Route exact path='/' component={Home}/>
