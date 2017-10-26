@@ -4,8 +4,38 @@ const request = require('request')
 const https = require('https')
 
 const app = express()
+const mongodb = require('mongodb')
+const mongoClient = mongodb.MongoClient
+const mongoose = require('mongoose')
+
+const url = 'mongodb://testuser:test@ds229415.mlab.com:29415/ims'
 
 app.use(express.static(path.join(__dirname, 'client/build')))
+
+app.get('/api/userlookup', (req, res) => {
+  console.log('this api has been accessed!')
+  function callback(info) {
+    console.log('Callback has been run: ' +info.user)
+    let data = { "user":info.user }
+    console.log('Callback has been run: ' +data.user)
+    res.json(info)
+  }
+  mongoClient.connect(url, function(err, db){
+    if(err){console.log(err, 'this didn\'t work')}
+    else {
+      db.collection('users').find({'user': 'tbwilson'}).toArray(function(err, res){
+        if(err){console.log(err)}
+        else if(res.length) {
+          console.log('Found it!: ', res[0])
+          db.close(callback(res[0]))
+        } else {
+          console.log('not found!!', res)
+          db.close()
+        }
+      })
+    }
+  })
+})
 
 app.get('*', (req, res) => {
   console.log('Someone has communicated with the server!')

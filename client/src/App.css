@@ -51,11 +51,11 @@ input {
   animation: 1s dropnavshow linear;
 }
 
-.left-nav {
+.top-nav {
   display: flex;
   flex-direction: column;
 }
-.right-nav {
+.bot-nav {
   display: flex;
   flex-direction: column;
 }
@@ -112,12 +112,6 @@ input {
     transform: scaleY(1);
   }
 }
-.drop-down-nav.show {
-  /*transform: scaleY(1);*/
-  display: inline;
-  animation: 1s dropnavshow linear;
-}
-
 .main-content {
   flex-basis: 800px;
   display: flex;
