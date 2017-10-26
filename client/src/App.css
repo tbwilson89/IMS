@@ -119,15 +119,9 @@ input {
   justify-content: center;
   align-items: center;
 }
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes slide-in {
-  0% {
-    transform:scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+.user-lookup {
+  height: 35px;
+  width: 250px;
+  background-color: white;
+  color: black;
 }
