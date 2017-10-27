@@ -22,6 +22,11 @@ export default class Redirects extends Component {
     this.displaySection = this.displaySection.bind(this)
     this.testclick = this.testclick.bind(this)
   }
+  // componentDidMount(){
+  //   gapi.load('auth2', function() {
+  //     gapi.auth2.init()
+  //   })
+  // }
 
   displaySection(btnClicked){
     let addloc

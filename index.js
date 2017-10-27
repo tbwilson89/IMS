@@ -16,7 +16,7 @@ app.get(`/api/userlookup?\*`, (req, res) => {
   let test = req.url.slice(16).toString()
   console.log('this api has been accessed! ' + test)
   function callback(info) {
-    if(info = 'notfound'){
+    if(info === 'notfound'){
       res.json('no user')
     } else {
       console.log('Callback has been run: ' +info.user)

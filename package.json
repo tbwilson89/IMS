@@ -18,6 +18,8 @@
   "homepage": "https://github.com/tbwilson89/IMS#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.4",
     "request": "^2.83.0"
   }
 }
