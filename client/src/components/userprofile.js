@@ -1,3 +1,6 @@
+/* global gapi */
+
+
 import React, { Component } from 'react'
 
 export default class UserProfile extends Component {
@@ -51,7 +54,7 @@ export default class UserProfile extends Component {
         <div>Content Edited: {this.state.contentEditText}</div>
         <div className="g-signin2" data-onsuccess='onSignIn'></div>
         <button onClick={this.onSignIn}>GOOGLE!</button>
-        <a href="#" onclick="signOut();">Sign out</a>
+        <a href="#" onClick={this.signOut}>Sign out</a>
       </div>
     )
   }
